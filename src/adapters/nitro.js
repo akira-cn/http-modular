@@ -7,7 +7,7 @@ export default {
   getUrl(event) {
     const request = event.node.req;
     const hostname = request.headers.host;
-    return `${request.protocol}://${hostname}${request.url}`;
+    return `//${hostname}${request.url}`;
   },
   async getParams(event) {
     return await readBody(event);
