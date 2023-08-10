@@ -32,12 +32,11 @@ console.log(await add(1, 2)); // => 3
 console.log(await getUrl()); // => /index
 ```
 
-### Online example
+### Online demo
 
-Server: https://runkit.com/akira-cn/es-modular-with-koa
+Server: https://github.com/AirCodeLabs/aircode/tree/main/examples/modular-demo
 
-Client: 
-
+Client: https://codepen.io/akira-cn/pen/mdQYvmz
 
 ## Features
 
