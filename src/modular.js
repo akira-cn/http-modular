@@ -8,17 +8,13 @@ function makeRpc(url, func) {
         'content-type': 'application/json'
       }
     });
-    try {
-      const type = ret.headers.get('content-type');
-      if(type && type.startsWith('application/json')) {
-        return await ret.json();
-      } else if(type && type.startsWith('text/')) {
-        return await ret.text();
-      }
-      return await ret.arrayBuffer();
-    } catch(ex) {
-      throw ex;
+    const type = ret.headers.get('content-type');
+    if(type && type.startsWith('application/json')) {
+      return await ret.json();
+    } else if(type && type.startsWith('text/')) {
+      return await ret.text();
     }
+    return await ret.arrayBuffer();
   }
 }
 `;
