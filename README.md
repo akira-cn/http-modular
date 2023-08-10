@@ -54,7 +54,7 @@ Client: https://codepen.io/akira-cn/pen/mdQYvmz
   - [x] [Vercel](https://vercel.com/)
   - [x] [AirCode](https://aircode.io/)
 
-- 🧩 Esay to extends.
+- 🧩 Esay to extend.
 
   You can extend ES-Modular to other environments such as Deno, Edge Runtime, or Ben by creating your own configurations.
 
