@@ -42,7 +42,7 @@ Client: https://codepen.io/akira-cn/pen/mdQYvmz
 
 ## Features
 
-- 🧸 Tiny and easy to use.
+- 🧸 Tiny size and easy to use.
 - 🌎 Works in any where, almost in all Node.js HTTP servers or cloud environments.
 
   ES-Modular inherently supports the following environments through corresponding configurations:
