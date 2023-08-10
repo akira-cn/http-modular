@@ -1,4 +1,4 @@
-# ES-Modular
+# HTTP-Modular
 
 A universal library for converting server-side functions into ES Modules.
 
@@ -8,7 +8,7 @@ A universal library for converting server-side functions into ES Modules.
 
 ```js
 // https://au215ybu51.us.aircode.run/index
-import {config, modular} from 'es-modular';
+import {config, modular} from 'http-modular';
 
 function add(x, y) {
   return x + y;
@@ -65,7 +65,7 @@ Client: https://codepen.io/akira-cn/pen/mdQYvmz
 ```js
 import Koa from "koa";
 import { bodyParser } from "@koa/bodyparser";
-import { modular, config } from 'es-modular';
+import { modular, config } from 'http-modular';
 
 function add(x, y) {
   return x + y;
@@ -89,7 +89,7 @@ app.listen(3000);
 ```js
 import express from "express";
 import bodyParser from 'body-parser';
-import { modular, config } from 'es-modular';
+import { modular, config } from 'http-modular';
 
 const app = express();
 
@@ -119,7 +119,7 @@ app.listen(3000);
 
 ```js
 import Fastify from 'fastify';
-import { modular, config } from 'es-modular';
+import { modular, config } from 'http-modular';
 
 const fastify = Fastify({
   logger: true
@@ -154,7 +154,7 @@ fastify.listen({ port: 3000 }, function (err, address) {
 4. Work with Nitro
 
 ```js
-import { modular, config } from 'es-modular';
+import { modular, config } from 'http-modular';
 
 function add(x, y) {
   return x + y;
@@ -177,7 +177,7 @@ export default eventHandler(
 5. Work with Vercel api function:
 
 ```js
-import { modular, config } from 'es-modular';
+import { modular, config } from 'http-modular';
 
 function add(x, y) {
   return x + y;
@@ -197,7 +197,7 @@ export default modular({add, echo, getMessage}, config.vercel);
 6. Work with AirCode cloud function:
 
 ```js
-import {config, modular} from 'es-modular';
+import {config, modular} from 'http-modular';
 
 function add(x, y) {
   return x + y;
