@@ -2,6 +2,8 @@
 
 A universal library for converting server-side functions into ES Modules.
 
+<img src="https://aircode-yvo.b-cdn.net/resource/modules-9sfv4swzvco.svg" width="200">
+
 **server:**
 
 ```js
