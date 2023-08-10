@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "scripts": {
+    "prepare": "nitropack prepare",
+    "dev": "nitropack dev",
+    "build": "nitropack build",
+    "preview": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "es-modular": "^0.1.4",
+    "nitropack": "latest"
+  }
+}
