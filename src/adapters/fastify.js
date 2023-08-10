@@ -2,6 +2,10 @@ export default {
   getContext(request, reply) {
     return {request, reply};
   },
+  getUrl(request) {
+    const hostname = request.headers.host;
+    return `${request.protocol}://${hostname}${request.url}`;
+  },
   getParams(request) {
     return request.body;
   },

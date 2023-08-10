@@ -32,6 +32,13 @@ console.log(await add(1, 2)); // => 3
 console.log(await getUrl()); // => /index
 ```
 
+### Online example
+
+Server: https://runkit.com/akira-cn/es-modular-with-koa
+
+Client: 
+
+
 ## Features
 
 - 🧸 Tiny and easy to use.

@@ -2,6 +2,10 @@ export default {
   getContext(params, context) {
     return context;
   },
+  getUrl(params, context) {
+    const {protocol, host, url} = context;
+    return `${protocol}://${host}${url}`;
+  },
   getParams(params) {
     return params;
   },

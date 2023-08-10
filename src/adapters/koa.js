@@ -2,6 +2,9 @@ export default {
   getContext(ctx) {
     return ctx;
   },
+  getUrl(ctx) {
+    return `${ctx.request.protocol}://${ctx.request.host}${ctx.request.url}`;
+  },
   getParams(ctx) {
     return ctx.request.body;
   },

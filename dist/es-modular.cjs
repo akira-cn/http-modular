@@ -29,6 +29,10 @@ var aircode_default = {
   getContext(params, context) {
     return context;
   },
+  getUrl(params, context) {
+    const { protocol, host, url } = context;
+    return `${protocol}://${host}${url}`;
+  },
   getParams(params) {
     return params;
   },
@@ -44,6 +48,10 @@ var aircode_default = {
 var express_default = {
   getContext(request, response) {
     return { request, response };
+  },
+  getUrl(request) {
+    const hostname = request.headers.host;
+    return `${request.protocol}://${hostname}${request.url}`;
   },
   getParams(request) {
     return request.body;
@@ -65,6 +73,9 @@ var koa_default = {
   getContext(ctx) {
     return ctx;
   },
+  getUrl(ctx) {
+    return `${ctx.request.protocol}://${ctx.request.host}${ctx.request.url}`;
+  },
   getParams(ctx) {
     return ctx.request.body;
   },
@@ -81,6 +92,10 @@ var fastify_default = {
   getContext(request, reply) {
     return { request, reply };
   },
+  getUrl(request) {
+    const hostname = request.headers.host;
+    return `${request.protocol}://${hostname}${request.url}`;
+  },
   getParams(request) {
     return request.body;
   },
@@ -96,6 +111,10 @@ var fastify_default = {
 var vercel_default = {
   getContext(request, response) {
     return { request, response };
+  },
+  getUrl(request) {
+    const hostname = request.headers.host;
+    return `//${hostname}${request.url}`;
   },
   getParams(request) {
     return request.body;
@@ -470,6 +489,11 @@ var nitro_default = {
   getContext(event) {
     return { request: event.node.req, response: event.node.res, ...event };
   },
+  getUrl(event) {
+    const request = event.node.req;
+    const hostname = request.headers.host;
+    return `${request.protocol}://${hostname}${request.url}`;
+  },
   async getParams(event) {
     return await readBody(event);
   },
@@ -516,20 +540,20 @@ function makeRpc(url, func) {
   }
 }
 `;
-function buildModule(rpcs) {
+function buildModule(rpcs, url) {
   let source = [sourePrefix];
   for (const key of Object.keys(rpcs)) {
-    source.push(`export const ${key} = makeRpc(location.href, '${key}');`);
+    source.push(`export const ${key} = makeRpc('${url}', '${key}');`);
   }
   return source.join("\n");
 }
-function modular(rpcs, { getParams, getContext, setContentType, setBody }) {
+function modular(rpcs, { getParams, getUrl, getContext, setContentType, setBody }) {
   return async function(...rest) {
     const ctx = getContext(...rest);
     const method = ctx.request?.method || ctx.req?.method;
     if (method === "GET") {
       setContentType(...rest);
-      return setBody(buildModule(rpcs, ctx), ...rest);
+      return setBody(buildModule(rpcs, getUrl(...rest)), ...rest);
     } else {
       const { func, args } = await getParams(...rest);
       return setBody(await rpcs[func](...args, ctx), ...rest);

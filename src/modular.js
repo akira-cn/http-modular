@@ -23,22 +23,22 @@ function makeRpc(url, func) {
 }
 `;
 
-function buildModule(rpcs) {
+function buildModule(rpcs, url) {
   let source = [sourePrefix];
   for(const key of Object.keys(rpcs)) {
-    source.push(`export const ${key} = makeRpc(location.href, '${key}');`);
+    source.push(`export const ${key} = makeRpc('${url}', '${key}');`);
   }
   return source.join('\n');
 }
 
-export function modular(rpcs, {getParams, getContext, setContentType, setBody}) {
+export function modular(rpcs, {getParams, getUrl, getContext, setContentType, setBody}) {
   return async function (...rest) {
     const ctx = getContext(...rest);
     const method = ctx.request?.method || ctx.req?.method;
     if(method === 'GET') {
       // eslint-disable-next-line no-unsafe-optional-chaining
       setContentType(...rest);
-      return setBody(buildModule(rpcs, ctx), ...rest);
+      return setBody(buildModule(rpcs, getUrl(...rest)), ...rest);
     } else {
       const {func, args} = await getParams(...rest);
       return setBody(await rpcs[func](...args, ctx), ...rest);
