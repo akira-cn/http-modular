@@ -62,12 +62,12 @@ Client: Experiment with the library on [CodePen](https://codepen.io/akira-cn/pen
 
   HTTP-Modular seamlessly integrates with various environments using dedicated configurations for:
   
-  - [x] [Express](https://expressjs.com/)
-  - [x] [Koa](https://koajs.com/)
-  - [x] [Fastify](https://fastify.dev/)
-  - [x] [Nitro](https://nitro.unjs.io/)
-  - [x] [Vercel](https://vercel.com/)
-  - [x] [AirCode](https://aircode.io/)
+  - [x] [Koa](https://koajs.com/) - [Integrating with Koa](#integrating-with-koa)
+  - [x] [Express](https://expressjs.com/) - [Integrating with Express](#integrating-with-express)
+  - [x] [Fastify](https://fastify.dev/) - [Integrating with Fastify](#integrating-with-fastify)
+  - [x] [Nitro](https://nitro.unjs.io/) - [Integrating with Nitro](#integrating-with-nitro)
+  - [x] [Vercel](https://vercel.com/) - [Integrating with Vercel](#integrating-with-vercel)
+  - [x] [AirCode](https://aircode.io/) - [Integrating with AirCode](#integrating-with-aircode)
 
 - 🧩 Effortless extensibility.
 
