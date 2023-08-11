@@ -1,6 +1,6 @@
 {
   "name": "http-modular",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A universal library for converting server-side functions into ES Modules.",
   "main": "dist/es-modular.cjs",
   "module": "src/index.js",

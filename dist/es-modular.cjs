@@ -552,11 +552,6 @@ function modular(rpcs, { getParams, getUrl, getContext, setContentType, setBody 
       return setBody(buildModule(rpcs, getUrl(...rest)), ...rest);
     } else {
       const { func, args } = await getParams(...rest);
-      if (!func) {
-        return setBody("func is required", ...rest);
-      } else if (!rpcs[func]) {
-        return setBody(`func ${func} is not defined`, ...rest);
-      }
       return setBody(await rpcs[func](...args || [], ctx), ...rest);
     }
   };
