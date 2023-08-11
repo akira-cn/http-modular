@@ -1,10 +1,10 @@
 # HTTP-Modular
 
-HTTP-Modular is a universal library for converting server-side functions into ES Modules.
+A universal library for converting server-side functions into ES Modules.
 
 <img src="https://aircode-yvo.b-cdn.net/resource/modules-9sfv4swzvco.svg" width="200">
 
-**HTTP-Modular release the true potential power of BFF(Back end for FrontEnd).**
+**HTTP-Modular is a compact RPC library that unlocks the full potential of BFF (Back end for FrontEnd) capabilities.**
 
 Gone are the days of cumbersome code like this:
 
