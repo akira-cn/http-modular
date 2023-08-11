@@ -4,34 +4,46 @@ A universal library for converting server-side functions into ES Modules.
 
 <img src="https://aircode-yvo.b-cdn.net/resource/modules-9sfv4swzvco.svg" width="200">
 
-**server:**
+**HTTP-Modular makes the real BFF(Back end for FrontEnd) come true!**
+
+Without modular, you may write code like this:
 
 ```js
-// https://au215ybu51.us.aircode.run/index
-import {config, modular} from 'http-modular';
-
-function add(x, y) {
-  return x + y;
-}
-
-function getUrl(context) {
-  const {url} = context;
-  return url;
-}
-
-export default modular({
-  add,
-  getUrl,
-}, config.aircode);
+// server-side
+app.post('/save', async (context) => {
+  ......
+  await getData(context);
+  await db.save(data);
+});
 ```
 
-**client**
+```js
+// in browser
+const res = await fetch('https://<server.url>:<port>/save', {
+  method: 'POST',
+  body: JSON.stringify(data),
+  headers: {
+    ...
+  }
+);
+const result = await res.json();
+```
+
+Now with modular, you can write code like this:
 
 ```js
-import {add, getUrl} from 'https://au215ybu51.us.aircode.run/index';
+// server-side
+...
+function save(data) {
+  ......
+  await db.save(data);
+}
+app.all('/save', modular({save, list, delete}, config.koa));
+```
 
-console.log(await add(1, 2)); // => 3
-console.log(await getUrl()); // => /index
+```js
+import {save} from 'https://<server.url>:<port>/save';
+const result = await save(data); // done!
 ```
 
 ### Online demo
@@ -58,7 +70,7 @@ Client: https://codepen.io/akira-cn/pen/mdQYvmz
 
   You can extend HTTP-Modular to other environments such as Deno, Edge Runtime, or Ben by creating your own configurations.
 
-## Usage
+## Quick Started
 
 1. Work with Koa:
 
