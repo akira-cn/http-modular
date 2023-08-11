@@ -32,7 +32,6 @@ export function modular(rpcs, {getParams, getUrl, getContext, setContentType, se
     const ctx = getContext(...rest);
     const method = ctx.request?.method || ctx.req?.method;
     if(method === 'GET') {
-      // eslint-disable-next-line no-unsafe-optional-chaining
       setContentType(...rest);
       return setBody(buildModule(rpcs, getUrl(...rest)), ...rest);
     } else {
