@@ -1,4 +1,4 @@
-const sourePrefix = `
+const sourcePrefix = `
 function makeRpc(url, func) {
   return async(...args) => {
     const ret = await fetch(url, {
@@ -20,7 +20,7 @@ function makeRpc(url, func) {
 `;
 
 function buildModule(rpcs, url) {
-  let source = [sourePrefix];
+  let source = [sourcePrefix];
   for(const key of Object.keys(rpcs)) {
     source.push(`export const ${key} = makeRpc('${url}', '${key}');`);
   }
