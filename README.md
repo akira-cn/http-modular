@@ -66,8 +66,8 @@ Client: Experiment with the library on [CodePen](https://codepen.io/akira-cn/pen
   - [x] [Express](https://expressjs.com/) - [Integrating with Express](#2-integrating-with-express)
   - [x] [Fastify](https://fastify.dev/) - [Integrating with Fastify](#3-integrating-with-fastify)
   - [x] [Nitro](https://nitro.unjs.io/) - [Integrating with Nitro](#4-integrating-with-nitro)
-  - [x] [Vercel](https://vercel.com/) - [Integrating with Vercel](#5-integrating-with-vercel)
-  - [x] [AirCode](https://aircode.io/) - [Integrating with AirCode](#6-integrating-with-aircode)
+  - [x] [Vercel](https://vercel.com/) - [Integrating with Vercel](#5-integrating-with-vercel-api-functions)
+  - [x] [AirCode](https://aircode.io/) - [Integrating with AirCode](#6-integrating-with-aircode-cloud-functions)
 
 - 🧩 Effortless extensibility.
 
