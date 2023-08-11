@@ -75,7 +75,7 @@ Client: Experiment with the library on [CodePen](https://codepen.io/akira-cn/pen
 
 ## Quick Started
 
-1. Integrating with Koa:
+### 1. Integrating with Koa:
 
 ```js
 import Koa from "koa";
@@ -99,7 +99,7 @@ app.use(modular({ add, getHost }, config.koa));
 app.listen(3000);
 ```
 
-2. Integrating with Express:
+### 2. Integrating with Express:
 
 ```js
 import express from "express";
@@ -130,7 +130,7 @@ app.all('/', modular({ add, getHost, getMessage }, config.express));
 app.listen(3000);
 ```
 
-3. Integrating with Fastify:
+### 3. Integrating with Fastify:
 
 ```js
 import Fastify from 'fastify';
@@ -166,7 +166,7 @@ fastify.listen({ port: 3000 }, function (err, address) {
 });
 ```
 
-4. Integrating with Nitro
+### 4. Integrating with Nitro
 
 ```js
 import { modular, config } from 'http-modular';
@@ -189,7 +189,7 @@ export default eventHandler(
 );
 ```
 
-5. Integrating with Vercel API Functions:
+### 5. Integrating with Vercel API Functions:
 
 ```js
 import { modular, config } from 'http-modular';
@@ -209,7 +209,7 @@ function getMessage() {
 export default modular({add, echo, getMessage}, config.vercel);
 ```
 
-6. Integrating with AirCode Cloud Functions:
+### 6. Integrating with AirCode Cloud Functions:
 
 ```js
 import {config, modular} from 'http-modular';
