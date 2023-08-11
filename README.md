@@ -12,8 +12,9 @@ Gone are the days of cumbersome code like this:
 // server-side
 app.post('/save', async (context) => {
   ......
-  await getData(context);
-  await db.save(data);
+  const data = await getData(context);
+  const result = await db.save(data);
+  context.body = result;
 });
 ```
 
@@ -34,9 +35,9 @@ Embrace the future of coding with modular capabilities:
 ```js
 // server-side
 ...
-function save(data) {
+async function save(data) {
   ......
-  await db.save(data);
+  return await db.save(data);
 }
 app.all('/save', modular({save, list, delete}, config.koa));
 ```
