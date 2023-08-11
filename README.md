@@ -42,6 +42,7 @@ app.all('/save', modular({save, list, delete}, config.koa));
 ```
 
 ```js
+// in browser
 import {save} from 'https://<server.url>:<port>/save';
 const result = await save(data); // done!
 ```
