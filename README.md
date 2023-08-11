@@ -45,7 +45,7 @@ Client: https://codepen.io/akira-cn/pen/mdQYvmz
 - 🧸 Tiny size and easy to use.
 - 🌎 Works in any where, almost in all Node.js HTTP servers or cloud environments.
 
-  ES-Modular inherently supports the following environments through corresponding configurations:
+  HTTP-Modular inherently supports the following environments through corresponding configurations:
 
   - [x] [Express](https://expressjs.com/)
   - [x] [Koa](https://koajs.com/)
@@ -54,9 +54,9 @@ Client: https://codepen.io/akira-cn/pen/mdQYvmz
   - [x] [Vercel](https://vercel.com/)
   - [x] [AirCode](https://aircode.io/)
 
-- 🧩 Esay to extends.
+- 🧩 Esay to extend.
 
-  You can extend ES-Modular to other environments such as Deno, Edge Runtime, or Ben by creating your own configurations.
+  You can extend HTTP-Modular to other environments such as Deno, Edge Runtime, or Ben by creating your own configurations.
 
 ## Usage
 
