@@ -80,15 +80,13 @@ Client: Experiment with the library on [CodePen](https://codepen.io/akira-cn/pen
 ```js
 import Koa from "koa";
 import { bodyParser } from "@koa/bodyparser";
-import { modular, config } from 'http-modular';
+import { modular, context, config } from 'http-modular';
 
 function add(x, y) {
   return x + y;
 }
 
-function getHost($context) {
-  return $context.request.hostname;
-}
+const getHost = context(ctx => ctx.request.hostname);
 
 const app = new Koa();
 app.use(bodyParser());
@@ -104,7 +102,7 @@ app.listen(3000);
 ```js
 import express from "express";
 import bodyParser from 'body-parser';
-import { modular, config } from 'http-modular';
+import { modular, context, config } from 'http-modular';
 
 const app = express();
 
@@ -117,9 +115,7 @@ function add(x, y) {
   return x + y;
 }
 
-function getHost($context) {
-  return $context.request.hostname;
-}
+const getHost = context(ctx => ctx.request.hostname);
 
 function getMessage() {
   return {hi: 'there'};
@@ -134,7 +130,7 @@ app.listen(3000);
 
 ```js
 import Fastify from 'fastify';
-import { modular, config } from 'http-modular';
+import { modular, context, config } from 'http-modular';
 
 const fastify = Fastify({
   logger: true
@@ -145,9 +141,7 @@ function add(x, y) {
   return x + y;
 }
 
-function getHost($context) {
-  return $context.request.hostname;
-}
+const getHost = context(ctx => ctx.request.hostname);
 
 function getMessage() {
   return {hi: 'there'};
@@ -169,16 +163,15 @@ fastify.listen({ port: 3000 }, function (err, address) {
 ### 4. Integrating with Nitro
 
 ```js
-import { modular, config } from 'http-modular';
+import { modular, context, config } from 'http-modular';
 
 function add(x, y) {
   return x + y;
 }
 
-async function echo(...args) {
-  const $context = args.pop();
-  return await readBody($context);
-}
+const echo = context(async (ctx) => {
+  return await readBody(ctx);
+})
 
 function getMessage() {
   return {hi: 'there'};
@@ -192,15 +185,13 @@ export default eventHandler(
 ### 5. Integrating with Vercel API Functions:
 
 ```js
-import { modular, config } from 'http-modular';
+import { modular, context, config } from 'http-modular';
 
 function add(x, y) {
   return x + y;
 }
 
-function echo($context) {
-  return $context.request.body;
-}
+const echo = context((ctx) => ctx.request.body);
 
 function getMessage() {
   return {hi: 'there'};
@@ -212,16 +203,13 @@ export default modular({add, echo, getMessage}, config.vercel);
 ### 6. Integrating with AirCode Cloud Functions:
 
 ```js
-import {config, modular} from 'http-modular';
+import {config, context, modular} from 'http-modular';
 
 function add(x, y) {
   return x + y;
 }
 
-function getUrl(context) {
-  const {url} = context;
-  return url;
-}
+const getUrl = context(ctx => ctx.url);
 
 export default modular({
   add,
