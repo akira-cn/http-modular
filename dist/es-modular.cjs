@@ -557,7 +557,7 @@ function modular(rpcs, { getParams, getUrl, getContext, setContentType, setBody 
       } else if (!rpcs[func]) {
         return setBody(`func ${func} is not defined`, ...rest);
       }
-      return setBody(await rpcs[func](...args, ctx), ...rest);
+      return setBody(await rpcs[func](...args || [], ctx), ...rest);
     }
   };
 }
