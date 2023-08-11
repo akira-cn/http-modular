@@ -1,5 +1,5 @@
 import Fastify from 'fastify';
-import { modular, config } from "../src/index.js";
+import { modular, context, config } from "../src/index.js";
 
 const fastify = Fastify({
   logger: true
@@ -10,9 +10,7 @@ function add(x, y) {
   return x + y;
 }
 
-function getHost($context) {
-  return $context.request.hostname;
-}
+const getHost = context((ctx) => ctx.request.hostname);
 
 function getMessage() {
   return {hi: 'there'};

@@ -1,14 +1,12 @@
 import Koa from "koa";
 import { bodyParser } from "@koa/bodyparser";
-import { modular, config } from "../src/index.js";
+import { modular, context, config } from "../src/index.js";
 
 function add(x, y) {
   return x + y;
 }
 
-function getHost($context) {
-  return $context.request.hostname;
-}
+const getHost = context((ctx) => ctx.request.hostname);
 
 const app = new Koa();
 app.use(bodyParser());

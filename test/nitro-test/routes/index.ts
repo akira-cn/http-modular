@@ -6,16 +6,15 @@
 //   console.log(await readBody(event));
 //   return { nitro: 'Is Awesome!' }
 // })
-import { modular, config } from "es-modular";
+import { modular, context, config } from "es-modular";
 
 function add(x, y) {
   return x + y;
 }
 
-async function echo(...args) {
-  const $context = args.pop();
-  return await readBody($context);
-}
+const echo = context(async (ctx) => {
+  return await readBody(ctx);
+});
 
 function getMessage() {
   return {hi: 'there'};

@@ -27,6 +27,22 @@ function buildModule(rpcs, url) {
   return source.join('\n');
 }
 
+const _ctx = Symbol('ctx');
+
+export function context(checker, func) {
+  if(!func) {
+    func = checker;
+    checker = ctx => ctx;
+  }
+  const ret = async (context, ...rest) => {
+    const ctx = await checker(context);
+    return await func(ctx, ...rest);
+  };
+  ret[_ctx] = true;
+
+  return ret;
+}
+
 export function modular(rpcs, {getParams, getUrl, getContext, setContentType, setBody}) {
   return async function (...rest) {
     const ctx = getContext(...rest);
@@ -35,8 +51,12 @@ export function modular(rpcs, {getParams, getUrl, getContext, setContentType, se
       setContentType(...rest);
       return setBody(buildModule(rpcs, getUrl(...rest)), ...rest);
     } else {
-      const {func, args} = await getParams(...rest);
-      return setBody(await rpcs[func](...(args||[]), ctx), ...rest);
+      const {func, args = []} = await getParams(...rest);
+      const f = rpcs[func];
+      if(f?.[_ctx]) {
+        return setBody(await f(ctx, ...args), ...rest);
+      }
+      return setBody(await f(...args), ...rest);
     }
   };
 }

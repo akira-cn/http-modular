@@ -1,6 +1,6 @@
 import express from "express";
 import bodyParser from 'body-parser';
-import { modular, config } from "../src/index.js";
+import { modular, context, config } from "../src/index.js";
 
 const app = express();
 
@@ -13,9 +13,7 @@ function add(x, y) {
   return x + y;
 }
 
-function getHost($context) {
-  return $context.request.hostname;
-}
+const getHost = context((ctx) => ctx.request.hostname);
 
 function getMessage() {
   return {hi: 'there'};

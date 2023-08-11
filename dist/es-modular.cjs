@@ -20,24 +20,25 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 var src_exports = {};
 __export(src_exports, {
   config: () => adapters,
+  context: () => context,
   modular: () => modular
 });
 module.exports = __toCommonJS(src_exports);
 
 // src/adapters/aircode.js
 var aircode_default = {
-  getContext(params, context) {
-    return context;
+  getContext(params, context2) {
+    return context2;
   },
-  getUrl(params, context) {
-    const { protocol, host, url } = context;
+  getUrl(params, context2) {
+    const { protocol, host, url } = context2;
     return `${protocol}://${host}${url}`;
   },
   getParams(params) {
     return params;
   },
-  setContentType(params, context) {
-    context.set("content-type", "text/javascript");
+  setContentType(params, context2) {
+    context2.set("content-type", "text/javascript");
   },
   setBody(body) {
     return body;
@@ -543,6 +544,19 @@ function buildModule(rpcs, url) {
   }
   return source.join("\n");
 }
+var _ctx = Symbol("ctx");
+function context(checker, func) {
+  if (!func) {
+    func = checker;
+    checker = (ctx) => ctx;
+  }
+  const ret = async (context2, ...rest) => {
+    const ctx = await checker(context2);
+    return await func(ctx, ...rest);
+  };
+  ret[_ctx] = true;
+  return ret;
+}
 function modular(rpcs, { getParams, getUrl, getContext, setContentType, setBody }) {
   return async function(...rest) {
     const ctx = getContext(...rest);
@@ -551,13 +565,18 @@ function modular(rpcs, { getParams, getUrl, getContext, setContentType, setBody 
       setContentType(...rest);
       return setBody(buildModule(rpcs, getUrl(...rest)), ...rest);
     } else {
-      const { func, args } = await getParams(...rest);
-      return setBody(await rpcs[func](...args || [], ctx), ...rest);
+      const { func, args = [] } = await getParams(...rest);
+      const f = rpcs[func];
+      if (f?.[_ctx]) {
+        return setBody(await f(ctx, ...args), ...rest);
+      }
+      return setBody(await f(...args), ...rest);
     }
   };
 }
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   config,
+  context,
   modular
 });

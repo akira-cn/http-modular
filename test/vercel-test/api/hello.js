@@ -1,12 +1,10 @@
-import { modular, config } from "../../../src/index.js";
+import { modular, context, config } from "../../../src/index.js";
 
 function add(x, y) {
   return x + y;
 }
 
-function echo($context) {
-  return $context.request.body;
-}
+const echo = context((ctx) => ctx.request.body);
 
 function getMessage() {
   return {hi: 'there'};
