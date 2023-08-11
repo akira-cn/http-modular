@@ -1,12 +1,12 @@
 # HTTP-Modular
 
-A universal library for converting server-side functions into ES Modules.
+HTTP-Modular is a universal library for converting server-side functions into ES Modules.
 
 <img src="https://aircode-yvo.b-cdn.net/resource/modules-9sfv4swzvco.svg" width="200">
 
-**HTTP-Modular makes the real BFF(Back end for FrontEnd) come true!**
+**HTTP-Modular release the true potential power of BFF(Back end for FrontEnd).**
 
-Without modular, you may write code like this:
+Gone are the days of cumbersome code like this:
 
 ```js
 // server-side
@@ -29,7 +29,7 @@ const res = await fetch('https://<server.url>:<port>/save', {
 const result = await res.json();
 ```
 
-Now with modular, you can write code like this:
+Embrace the future of coding with modular capabilities:
 
 ```js
 // server-side
@@ -46,19 +46,20 @@ import {save} from 'https://<server.url>:<port>/save';
 const result = await save(data); // done!
 ```
 
-### Online demo
+### Explore the Online Demo
 
-Server: https://github.com/AirCodeLabs/aircode/tree/main/examples/modular-demo
+Server: Check out [the GitHub repository](https://github.com/AirCodeLabs/aircode/tree/main/examples/modular-demo
+)
 
-Client: https://codepen.io/akira-cn/pen/mdQYvmz
+Client: Experiment with the library on [CodePen](https://codepen.io/akira-cn/pen/mdQYvmz)
 
 ## Features
 
-- 🧸 Tiny size and easy to use.
-- 🌎 Works in any where, almost in all Node.js HTTP servers or cloud environments.
+- 🧸 Lightweight and user-friendly design.
+- 🌎 Compatible everywhere: Supports a wide range of Node.js HTTP servers and cloud environments.
 
-  HTTP-Modular inherently supports the following environments through corresponding configurations:
-
+  HTTP-Modular seamlessly integrates with various environments using dedicated configurations for:
+  
   - [x] [Express](https://expressjs.com/)
   - [x] [Koa](https://koajs.com/)
   - [x] [Fastify](https://fastify.dev/)
@@ -66,13 +67,13 @@ Client: https://codepen.io/akira-cn/pen/mdQYvmz
   - [x] [Vercel](https://vercel.com/)
   - [x] [AirCode](https://aircode.io/)
 
-- 🧩 Esay to extend.
+- 🧩 Effortless extensibility.
 
-  You can extend HTTP-Modular to other environments such as Deno, Edge Runtime, or Ben by creating your own configurations.
+  Extend HTTP-Modular to other environments like Deno, Edge Runtime, or Ben by crafting custom configurations.
 
 ## Quick Started
 
-1. Work with Koa:
+1. Integrating with Koa:
 
 ```js
 import Koa from "koa";
@@ -96,7 +97,7 @@ app.use(modular({ add, getHost }, config.koa));
 app.listen(3000);
 ```
 
-2. Work with Express:
+2. Integrating with Express:
 
 ```js
 import express from "express";
@@ -127,7 +128,7 @@ app.all('/', modular({ add, getHost, getMessage }, config.express));
 app.listen(3000);
 ```
 
-3. Work with Fastify:
+3. Integrating with Fastify:
 
 ```js
 import Fastify from 'fastify';
@@ -163,7 +164,7 @@ fastify.listen({ port: 3000 }, function (err, address) {
 });
 ```
 
-4. Work with Nitro
+4. Integrating with Nitro
 
 ```js
 import { modular, config } from 'http-modular';
@@ -186,7 +187,7 @@ export default eventHandler(
 );
 ```
 
-5. Work with Vercel api function:
+5. Integrating with Vercel API Functions:
 
 ```js
 import { modular, config } from 'http-modular';
@@ -206,7 +207,7 @@ function getMessage() {
 export default modular({add, echo, getMessage}, config.vercel);
 ```
 
-6. Work with AirCode cloud function:
+6. Integrating with AirCode Cloud Functions:
 
 ```js
 import {config, modular} from 'http-modular';
