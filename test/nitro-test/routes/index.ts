@@ -6,7 +6,7 @@
 //   console.log(await readBody(event));
 //   return { nitro: 'Is Awesome!' }
 // })
-import { modular, context, config } from "es-modular";
+import { modular, context, config } from "http-modular";
 
 function add(x, y) {
   return x + y;

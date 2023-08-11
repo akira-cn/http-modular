@@ -7,7 +7,7 @@
     "preview": "node .output/server/index.mjs"
   },
   "dependencies": {
-    "es-modular": "^0.2.2",
+    "http-modular": "^0.2.0",
     "nitropack": "latest"
   }
 }
