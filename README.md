@@ -191,7 +191,7 @@ function add(x, y) {
   return x + y;
 }
 
-const echo = context((ctx) => ctx.request.body);
+const echo = context(ctx => ctx.request.body);
 
 function getMessage() {
   return {hi: 'there'};
