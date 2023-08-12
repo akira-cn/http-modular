@@ -39,12 +39,12 @@ async function save(data) {
   ......
   return await db.save(data);
 }
-app.all('/save', modular({save, list, delete}, config.koa));
+app.all('/action', modular({save, list, delete}, config.koa));
 ```
 
 ```js
 // in browser
-import {save} from 'https://<server.url>:<port>/save';
+import {save} from 'https://<server.url>:<port>/action';
 const result = await save(data); // done!
 ```
 
