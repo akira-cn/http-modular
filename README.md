@@ -44,8 +44,10 @@ app.all('/action', modular({save, list, delete}, config.koa));
 
 ```js
 // in browser
-import {save} from 'https://<server.url>:<port>/action';
+import {save, list, delete} from 'https://<server.url>:<port>/action';
+
 const result = await save(data); // done!
+...
 ```
 
 ### Explore the Online Demo
