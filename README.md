@@ -20,6 +20,7 @@ app.post('/save', async (context) => {
 
 ```js
 // in browser
+...
 const res = await fetch('https://<server.url>:<port>/save', {
   method: 'POST',
   body: JSON.stringify(data),
@@ -28,6 +29,7 @@ const res = await fetch('https://<server.url>:<port>/save', {
   }
 );
 const result = await res.json();
+...
 ```
 
 Embrace the future of coding with modular capabilities:
@@ -39,13 +41,15 @@ async function save(data) {
   ......
   return await db.save(data);
 }
-app.all('/save', modular({save, list, delete}, config.koa));
+app.all('/action', modular({save, list, delete}, config.koa));
 ```
 
 ```js
 // in browser
-import {save} from 'https://<server.url>:<port>/save';
+import {save, list, delete} from 'https://<server.url>:<port>/action';
+...
 const result = await save(data); // done!
+...
 ```
 
 ### Explore the Online Demo
@@ -191,7 +195,7 @@ function add(x, y) {
   return x + y;
 }
 
-const echo = context((ctx) => ctx.request.body);
+const echo = context(ctx => ctx.request.body);
 
 function getMessage() {
   return {hi: 'there'};
